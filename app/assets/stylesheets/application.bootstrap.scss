@@ -1,2 +1,24 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
+div.devise-form {
+  margin-top: 150px;
+  margin-inline: auto;
+  max-width: 330px;
+
+  text-align: center;
+
+  & > form {
+    margin-top: 1.5rem;
+    text-align: start;
+  }
+}
+
+.devise-form-links a {
+  display: block;
+  margin-bottom: .5rem !important;
+}
+
+.edit_user input {
+  max-width: 20rem;
+}
