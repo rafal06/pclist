@@ -1,7 +1,7 @@
 <div class="row mt-5">
 
   <div class="col-md-auto d-flex flex-md-column mb-4">
-    <img src="https://placehold.co/200" width="200px" height="200px" class="rounded-circle me-4 me-md-0" alt="photo">
+    <%= image_tag user_avatar(@user, 200), size: 200, alt: @user.username, class: "rounded-circle me-4 me-md-0" %>
     <div>
       <h2 class="mt-4"><%= @user.username %></h2>
 <!--      <p>Placeholder for user bio</p>-->

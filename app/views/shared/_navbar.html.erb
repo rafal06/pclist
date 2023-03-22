@@ -19,7 +19,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Avatar
+              <%= image_tag user_avatar(current_user, 64), size: 25, alt: current_user.username, class: "rounded-circle" %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li class="dropdown-item disabled text-dark">Logged in as <%= current_user.username %></li>
