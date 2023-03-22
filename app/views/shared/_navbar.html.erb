@@ -24,7 +24,7 @@
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li class="dropdown-item disabled text-dark">Logged in as <%= current_user.username %></li>
               <li><hr class="dropdown-divider"></li>
-              <li><%= link_to "Profile", current_user.username, class: "dropdown-item" %></li>
+              <li><%= link_to "Profile", "/#{current_user.username}", class: "dropdown-item" %></li>
               <li><%= link_to "Settings", "#", class: "dropdown-item" %></li>
               <li><hr class="dropdown-divider"></li>
               <li><%= button_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
