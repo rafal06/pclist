@@ -17,6 +17,10 @@
 
       <ul class="navbar-nav">
         <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to "+", machines_new_path, class: "nav-link me-3" %>
+          </li>
+
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= image_tag user_avatar(current_user, 64), size: 25, alt: current_user.username, class: "rounded-circle" %>

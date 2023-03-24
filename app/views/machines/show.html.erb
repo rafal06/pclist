@@ -1,0 +1,23 @@
+<div class="mx-auto" style="max-width: 50rem">
+  <h1><%= @machine.name %></h1>
+<!--  Some photos-->
+  <div>
+<!--    Machine data-->
+    <table>
+      <% %w[type brand model release_date production_date condition].each do |data| %>
+        <% next unless @machine[data] %>
+        <tr>
+          <td><%= data.gsub("_", " ").capitalize %></td>
+          <td><%= @machine[data] %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div>
+    <% if @machine.description %>
+      <%= @machine.description %>
+    <% else %>
+      <p><i>No description provided</i></p>
+    <% end %>
+  </div>
+</div>

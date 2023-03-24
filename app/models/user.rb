@@ -8,4 +8,6 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
 
   has_one_attached :avatar
+
+  has_many :machines
 end
