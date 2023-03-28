@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   get "/:username", to: "users#show", as: "user"
 
   get 'machines/new'
-  post 'machines/create'
+  post 'machines', to: "machines#create"
   delete 'machines/destroy'
   get ':username/:name', to: "machines#show", as: "machine"
-  get ':username/:name/edit', to: "machines#edit", as: "edit_machine"
-  patch ':username/:name/update', to: "machines#update", as: "update_machine"
+  get ':username/:name/edit', to: "machines#edit", as: "machines_edit"
+  patch ':username/:name', to: "machines#update", as: "machines_update"
 
   # Defines the root path route ("/")
   root "home#index"

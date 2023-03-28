@@ -30,9 +30,17 @@ class MachinesController < ApplicationController
   end
 
   def edit
+    @machine = current_user.machines.find_by(name: params[:name])
   end
 
   def update
+    @machine = current_user.machines.find_by(name: params[:name])
+    if @machine.update(machine_params)
+      redirect_to machine_path(current_user.username, @machine.name)
+    else
+      flash[:alert] = "Error updating machine"
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

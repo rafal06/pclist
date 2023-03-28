@@ -1,5 +1,8 @@
 <div class="mx-auto" style="max-width: 50rem">
-  <h1><%= @machine.name %></h1>
+  <h1>
+    <%= @machine.name %>
+    <%= link_to "edit", machines_edit_path, class: "fs-5" if current_user == @machine.user %>
+  </h1>
 <!--  Some photos-->
   <div>
 <!--    Machine data-->
