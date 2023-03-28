@@ -1,8 +1,15 @@
 class MachinesController < ApplicationController
   def show
     @user = User.find_by(username: params[:username])
-    @machine = @user.machines.find_by(name: params[:name])
+    if @user.nil?
+      @user = User.find_by(id: params[:username])
+      if @user.nil?
+        render file: "#{Rails.root}/public/404.html", status: :not_found
+        return
+      end
+    end
 
+    @machine = @user.machines.find_by(name: params[:name])
     unless @machine
       render file: "#{Rails.root}/public/404.html", status: :not_found
     end
