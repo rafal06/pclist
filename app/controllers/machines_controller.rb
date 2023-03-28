@@ -22,7 +22,7 @@ class MachinesController < ApplicationController
   def create
     @machine = current_user.machines.create(machine_params)
     if @machine.save
-      redirect_to "/#{current_user.username}/#{ERB::Util.u(@machine.name)}", status: :see_other
+      redirect_to machine_path(current_user, @machine.name)
     else
       flash[:alert] = "Error saving machine"
       render :new, status: :unprocessable_entity
