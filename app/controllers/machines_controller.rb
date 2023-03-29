@@ -16,10 +16,12 @@ class MachinesController < ApplicationController
   end
 
   def new
+    authenticate_user!
     @machine = current_user.machines.new
   end
 
   def create
+    authenticate_user!
     @machine = current_user.machines.create(machine_params)
     if @machine.save
       redirect_to machine_path(current_user, @machine.name)
@@ -30,10 +32,12 @@ class MachinesController < ApplicationController
   end
 
   def edit
+    authenticate_user!
     @machine = current_user.machines.find_by(name: params[:name])
   end
 
   def update
+    authenticate_user!
     @machine = current_user.machines.find_by(name: params[:name])
     if @machine.update(machine_params)
       redirect_to machine_path(current_user.username, @machine.name)
@@ -44,6 +48,7 @@ class MachinesController < ApplicationController
   end
 
   def destroy
+    authenticate_user!
   end
 
   private
