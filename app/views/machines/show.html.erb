@@ -29,7 +29,7 @@
   <hr>
   <div>
     <% if @machine.description %>
-      <%= @machine.description %>
+      <%= markdown @machine.description %>
     <% else %>
       <p><i>No description provided</i></p>
     <% end %>
