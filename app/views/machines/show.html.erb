@@ -1,4 +1,13 @@
-<div class="mx-auto" style="max-width: 50rem">
+<div class="mx-auto mt-4" style="max-width: 50rem">
+  <%= link_to user_path(@machine.user.username),
+              class: "d-block d-flex align-content-center my-1 fs-5 text-decoration-none" do %>
+    <%= image_tag user_avatar(@machine.user),
+                  width: "30px",
+                  height: "30px",
+                  class: "rounded-circle me-2" %>
+    <%= @machine.user.username %>
+  <% end %>
+
   <h1>
     <%= @machine.name %>
     <%= link_to "edit", machines_edit_path, class: "fs-5" if current_user == @machine.user %>
@@ -6,16 +15,18 @@
 <!--  Some photos-->
   <div>
 <!--    Machine data-->
-    <table>
+    <hr>
+    <table class="machine_show_table">
       <% %w[type brand model release_date production_date condition].each do |data| %>
         <% next if @machine[data].blank? %>
         <tr>
-          <td><%= data.gsub("_", " ").capitalize %></td>
+          <td class="pe-3"><%= data.gsub("_", " ").capitalize %></td>
           <td><%= @machine[data] %></td>
         </tr>
       <% end %>
     </table>
   </div>
+  <hr>
   <div>
     <% if @machine.description %>
       <%= @machine.description %>
