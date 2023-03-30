@@ -1,12 +1,9 @@
 class MachinesController < ApplicationController
   def show
     @user = User.find_by(username: params[:username])
-    if @user.nil?
-      @user = User.find_by(id: params[:username])
-      if @user.nil?
-        render file: "#{Rails.root}/public/404.html", status: :not_found
-        return
-      end
+    unless @user
+      render file: "#{Rails.root}/public/404.html", status: :not_found
+      return
     end
 
     @machine = @user.machines.find_by(name: params[:name])
@@ -24,7 +21,7 @@ class MachinesController < ApplicationController
     authenticate_user!
     @machine = current_user.machines.create(machine_params)
     if @machine.save
-      redirect_to machine_path(current_user, @machine.name)
+      redirect_to machine_path(current_user.username, @machine.name)
     else
       flash[:alert] = "Error saving machine"
       render :new, status: :unprocessable_entity
