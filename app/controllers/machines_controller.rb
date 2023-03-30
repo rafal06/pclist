@@ -46,6 +46,19 @@ class MachinesController < ApplicationController
 
   def destroy
     authenticate_user!
+    @machine = current_user.machines.find_by(id: params[:id])
+    if @machine.user != current_user
+      flash[:alert] = "You are not permitted to perform this action"
+      redirect_to machine_path(@machine.user.username, @machine.name)
+    end
+
+    if @machine.destroy!
+      flash[:notice] = "Machine #{@machine.name} was successfully deleted"
+      redirect_to user_path(current_user.username)
+    else
+      flash[:alert] = "Error deleting #{@machine.name}"
+      redirect_to machine_path(@user.username, @machine.name)
+    end
   end
 
   private
