@@ -19,8 +19,14 @@ div.devise-form {
   margin-bottom: .5rem !important;
 }
 
-.edit_user input {
+.edit_user input, .edit_user textarea {
   max-width: 20rem;
+}
+
+@media (min-width: 768px) {
+    .user_show_text {
+      width: 200px;
+    }
 }
 
 .cover {
