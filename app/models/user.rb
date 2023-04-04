@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :email, uniqueness: true
   validates :username, uniqueness: true
-  validates :bio, length: 0..160
+  validates :bio, length: 0..160, allow_nil: true
 
   has_one_attached :avatar
 
