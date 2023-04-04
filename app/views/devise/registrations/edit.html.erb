@@ -29,6 +29,11 @@
   <% end %>
 
   <div class="field mb-3">
+    <%= f.label :bio, class: "form-label" %>
+    <%= f.text_area :bio, maxlength: "160", rows: "3", class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
     <%= f.label :password, class: "form-label" %> <i>(leave blank if you don't want to change it)</i>
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     <% if @minimum_password_length %>
