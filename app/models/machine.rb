@@ -4,4 +4,5 @@ class Machine < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true
+  validates :condition, inclusion: { in: 1..5 }, allow_nil: true
 end
