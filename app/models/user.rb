@@ -9,4 +9,6 @@ class User < ApplicationRecord
   validates :bio, length: 0..160, allow_nil: true
 
   has_one_attached :avatar
+
+  has_many :machines
 end

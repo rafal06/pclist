@@ -1,0 +1,52 @@
+<div class="mx-auto mt-4" style="max-width: 50rem">
+  <%= link_to user_path(@machine.user.username),
+              class: "d-block d-flex align-content-center my-1 fs-5 text-decoration-none" do %>
+    <%= image_tag user_avatar(@machine.user),
+                  width: "30px",
+                  height: "30px",
+                  class: "rounded-circle me-2" %>
+    <%= @machine.user.username %>
+  <% end %>
+
+  <h1>
+    <%= @machine.name %>
+    <%= link_to "edit", machines_edit_path, class: "fs-5" if current_user == @machine.user %>
+  </h1>
+<!--  Some photos-->
+  <div>
+<!--    Machine data-->
+    <hr>
+    <table class="machine_show_table">
+      <% %w[type brand model release_date production_date].each do |data| %>
+        <% next if @machine[data].blank? %>
+        <tr>
+          <td class="pe-3"><%= data.gsub("_", " ").capitalize %></td>
+          <td><%= @machine[data] %></td>
+        </tr>
+      <% end %>
+
+      <% unless @machine.condition.blank? %>
+        <%= stylesheet_link_tag "star-rating" %>
+        <tr>
+          <td class="pe-3">Condition</td>
+          <td>
+            <% @machine.condition.times do %>
+              <span class="star full-star"></span>
+            <% end %>
+            <% (5 - @machine.condition).times do %>
+              <span class="star empty-star"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <hr>
+  <div>
+    <% if @machine.description %>
+      <%= markdown @machine.description %>
+    <% else %>
+      <p><i>No description provided</i></p>
+    <% end %>
+  </div>
+</div>

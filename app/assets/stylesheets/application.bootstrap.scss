@@ -32,3 +32,14 @@ div.devise-form {
 .cover {
   object-fit: cover;
 }
+
+.machine-form {
+  max-width: 540px;
+}
+
+.machine_show_table {
+  td {
+    padding-inline: 5px;
+    padding-block: 3px;
+  }
+}
