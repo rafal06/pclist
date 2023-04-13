@@ -24,8 +24,25 @@
     <%= f.date_field :production_date, class: "form-control" %>
   </div>
   <div class="mt-3">
-    <%= f.label :condition, class: "form-label" %>
-    <%= f.number_field :condition, class: "form-control" %>
+    <p class="form-label pe-none"><%= :condition.capitalize %></p>
+    <%= stylesheet_link_tag "star-rating" %>
+
+    <div class="stars">
+      <%= f.radio_button :condition, 5, class: "star star-5" %>
+      <%= f.label " ", for: "machine_condition_5", class: "star star-5" %>
+
+      <%= f.radio_button :condition, 4, class: "star star-4" %>
+      <%= f.label " ", for: "machine_condition_4", class: "star star-4" %>
+
+      <%= f.radio_button :condition, 3, class: "star star-3" %>
+      <%= f.label " ", for: "machine_condition_3", class: "star star-3" %>
+
+      <%= f.radio_button :condition, 2, class: "star star-2" %>
+      <%= f.label " ", for: "machine_condition_2", class: "star star-2" %>
+
+      <%= f.radio_button :condition, 1, class: "star star-1" %>
+      <%= f.label " ", for: "machine_condition_1", class: "star star-1" %>
+    </div>
   </div>
   <div class="mt-3">
     <%= f.label :description, class: "form-label" %>
