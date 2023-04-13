@@ -30,3 +30,18 @@ label.star {
     transition: all .25s;
   }
 }
+
+span.star {
+  font-family: FontAwesome;
+  font-size: 26px;
+  padding-inline-end: 1px;
+
+  &.empty-star:before {
+    content: '\f006';
+    color: #444;
+  }
+  &.full-star:before {
+    content: '\f005';
+    color: #FD4;
+  }
+}
