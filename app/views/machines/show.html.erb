@@ -1,3 +1,5 @@
+<% content_for :title, @machine.name %>
+
 <div class="mx-auto mt-4" style="max-width: 50rem">
   <%= link_to user_path(@machine.user.username),
               class: "d-block d-flex align-content-center my-1 fs-5 text-decoration-none" do %>
