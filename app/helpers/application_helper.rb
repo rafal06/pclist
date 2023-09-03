@@ -11,7 +11,7 @@ module ApplicationHelper
     if machine.image.attached?
       machine.image.variant(resize_to_fill: [width, height])
     else
-      "https://placehold.co/#{width}x#{height}"
+      "default-pc-image.svg"
     end
   end
 
