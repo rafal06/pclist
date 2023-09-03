@@ -10,41 +10,53 @@
     <%= @machine.user.username %>
   <% end %>
 
-  <h1>
-    <%= @machine.name %>
-    <%= link_to "edit", machines_edit_path, class: "fs-5" if current_user == @machine.user %>
-  </h1>
-<!--  Some photos-->
-  <div>
-<!--    Machine data-->
-    <hr>
-    <table class="machine_show_table">
-      <% %w[type brand model release_date production_date].each do |data| %>
-        <% next if @machine[data].blank? %>
-        <tr>
-          <td class="pe-3"><%= data.gsub("_", " ").capitalize %></td>
-          <td><%= @machine[data] %></td>
-        </tr>
-      <% end %>
+  <div class="row">
+    <div class="col">
+      <h1>
+        <%= @machine.name %>
+        <%= link_to "edit", machines_edit_path, class: "fs-5" if current_user == @machine.user %>
+      </h1>
 
-      <% unless @machine.condition.blank? %>
-        <%= stylesheet_link_tag "star-rating" %>
-        <tr>
-          <td class="pe-3">Condition</td>
-          <td>
-            <% @machine.condition.times do %>
-              <span class="star full-star"></span>
-            <% end %>
-            <% (5 - @machine.condition).times do %>
-              <span class="star empty-star"></span>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
+      <hr>
+      <table class="machine_show_table">
+        <% %w[type brand model release_date production_date].each do |data| %>
+          <% next if @machine[data].blank? %>
+          <tr>
+            <td class="pe-3"><%= data.gsub("_", " ").capitalize %></td>
+            <td><%= @machine[data] %></td>
+          </tr>
+        <% end %>
+
+        <% unless @machine.condition.blank? %>
+          <%= stylesheet_link_tag "star-rating" %>
+          <tr>
+            <td class="pe-3">Condition</td>
+            <td>
+              <% @machine.condition.times do %>
+                <span class="star full-star"></span>
+              <% end %>
+              <% (5 - @machine.condition).times do %>
+                <span class="star empty-star"></span>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+    <% if @machine.image.attached? %>
+      <div class="my-3 my-md-0 col-md-auto d-flex align-items-center justify-content-center" data-turbo="false">
+        <a href="#img-lg">
+          <%= image_tag machine_image(@machine, 600), width: 300, class: "rounded-3" %>
+        </a>
+        <a href="#" id="img-lg" class="img-lg">
+          <%= image_tag @machine.image %>
+        </a>
+      </div>
+  <% end %>
   </div>
+
   <hr>
-  <div>
+  <div class="machine-description">
     <% if @machine.description %>
       <%= markdown @machine.description %>
     <% else %>
