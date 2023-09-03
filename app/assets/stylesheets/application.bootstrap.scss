@@ -1,6 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
 
+@import "enlarge-img";
+
 div.devise-form {
   margin-top: 150px;
   margin-inline: auto;
@@ -42,4 +44,8 @@ div.devise-form {
     padding-inline: 5px;
     padding-block: 3px;
   }
+}
+
+.machine-description img {
+  max-width: 100%;
 }

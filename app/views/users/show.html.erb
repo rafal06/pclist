@@ -24,7 +24,7 @@
         <a href="<%= machine_path(@user.username, machine.name) %>" class="d-block col-12 col-md-6 col-lg-6 text-decoration-none text-dark">
           <div class="d-flex flex-wrap border border-secondary rounded-3 p-3 bg-light">
 
-            <img src="https://placehold.co/800x600" class="col-md-3 img-fluid cover rounded-1 me-3 mb-3 mb-md-0">
+            <%= image_tag machine_image(machine, 800, 600), class: "col-md-3 img-fluid cover rounded-1 me-3 mb-3 mb-md-0" %>
 
             <div class="col">
               <h3 class="fs-4"><%= machine.name %></h3>
