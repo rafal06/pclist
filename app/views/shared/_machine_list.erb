@@ -1,0 +1,19 @@
+<div class="row d-flex flex-wrap g-3 g-md-2 overflow-hidden">
+  <% if machines.blank? %>
+    <%= yield %>
+  <% else %>
+    <% machines.each do |machine| %>
+      <%= link_to machine_path(machine.user.username, machine.name),
+                  class: "d-block col-12 col-md-6 col-xl-#{local_assigns[:col_xl] || 6} text-decoration-none text-dark" do %>
+        <div class="d-flex flex-wrap border border-secondary rounded-3 p-3 bg-light">
+          <%= image_tag machine_image(machine, 800, 600), class: "col-md-3 img-fluid cover rounded-1 me-3 mb-3 mb-md-0" %>
+
+          <div class="col">
+            <h3 class="fs-4"><%= machine.name %></h3>
+            <p class="m-0"><%= truncate machine.description, length: 64 %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

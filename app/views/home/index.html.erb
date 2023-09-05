@@ -1,3 +1,22 @@
 <% content_for :title, "Home" %>
 
-<h1>Hello world</h1>
+<h2 class="mb-3 pt-3 fs-3">My collection</h2>
+<%= render layout: "shared/machine_list", locals: {
+    machines: @collection,
+    col_xl: 4,
+} do %>
+  <p class="text-center mb-1">You don't have any machines, yet</p>
+  <p class="text-center">
+    <%= link_to "+ add machine", machines_new_path, class: "btn btn-primary" %>
+  </p>
+<% end %>
+
+<h2 class="pt-4 fs-3">Explore</h2>
+<p class="mb-3 text-secondary">Random machines from PCList, selected just for you</p>
+<!-- TODO: Display an owner of each machine -->
+<%= render layout: "shared/machine_list", locals: {
+  machines: @explore,
+  col_xl: 4,
+} do %>
+  <p class="text-center">Nothing here</p>
+<% end %>
