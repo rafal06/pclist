@@ -1,0 +1,13 @@
+<% content_for :title, "Explore" %>
+
+<h1 class="fs-3 pt-3">Explore</h1>
+<p class="mb-3 text-secondary">All machines from PCList, sorted by newest first</p>
+
+<%= render layout: "shared/machine_list", locals: {
+  machines: @machines,
+  col_xl: 4,
+} do %>
+  <p class="text-center">Nothing here</p>
+<% end %>
+
+<%= paginate @machines %>

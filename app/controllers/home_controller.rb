@@ -14,4 +14,10 @@ class HomeController < ApplicationController
 
     render
   end
+
+  def explore
+    @machines = Machine.order(created_at: :desc)
+                       .page(params[:page])
+                       .per(15)
+  end
 end
