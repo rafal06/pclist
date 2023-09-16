@@ -2,7 +2,8 @@ class HomeController < ApplicationController
   def index
     unless user_signed_in?
       # I'll implement a landing page later
-      redirect_to user_session_path
+      # redirect_to user_session_path
+      render 'landing_page'
       return
     end
 
