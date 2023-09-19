@@ -1,7 +1,7 @@
 FROM ruby:3.2.2-slim
 
 RUN apt update \
-    && apt install -y tini libvips-tools make gcc nodejs npm --no-install-recommends \
+    && apt install -y tini libvips-tools libpq-dev make gcc nodejs npm --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 RUN npm i -g yarn
 
@@ -20,10 +20,6 @@ RUN apt purge -y make gcc nodejs npm
 ENV RAILS_ENV production
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_SERVE_STATIC_FILES true
-
-# TODO: switch to postgresql
-VOLUME ["/data"]
-ENV DATABASE_URL "../data/pclist.sqlite3"
 
 EXPOSE 3000
 ENTRYPOINT ["tini", "--"]
