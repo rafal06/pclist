@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  backend:
+    build:
+      context: .
+    restart: unless-stopped
+    environment:
+      # Generate a secret with `rails secret | cut -c-32` inside the container
+      RAILS_MASTER_KEY: paste-the-master-key
+      # Same here, but with only `rails secret`
+      SECRET_KEY_BASE: paste-the-secret-key
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./docker-data:/data
+      - ./docker-data/storage:/app/storage

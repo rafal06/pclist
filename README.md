@@ -34,12 +34,25 @@
     </tr>
 </table>
 
-## External dependencies
-In order for it to work, you need to have the following external dependencies installed on your system
-- `vips-tools`
+## Running in Docker
+
+Assuming you have Docker installed, clone this repository and copy `docker-compose.example.yml` as `docker-compose.yml`. Then, from the repository root, run the following command to build the image:
+```shell
+docker compose build
+```
+Then, run the following commands and paste the outputs in the corresponding fields in `docker-compose.yml` file.
+```shell
+docker compose run backend rails secret | cut -c-32
+docker compose run backend rails secret
+```
+After that, run the database migrations by running the following:
+```shell
+docker compose run backend rails db:migrate
+```
+Then, you can run the container with `docker compose up -d`. PCList will be running on the port `3000`.
 
 ## Development
-0. Install Ruby, Node.js, yarn and clone this repository
+0. Install Ruby, Node.js, yarn, libvips and clone this repository
 1. Install dependencies
 ```shell
 bundle install
