@@ -52,14 +52,15 @@ docker compose run backend rails db:migrate
 Then, you can run the container with `docker compose up -d`. PCList will be running on the port `3000`.
 
 ## Development
-0. Install Ruby, Node.js, yarn, libvips and clone this repository
+0. Set up a PostgreSQL database. Install Ruby, Node.js, yarn, libvips, libpq-devel and clone this repository
 1. Install dependencies
 ```shell
 bundle install
 yarn install
 ```
-2. Run migrations and start the dev server
+2. Export environment variables (replace the values with yours), run migrations and start the dev server
 ```shell
+export DATABASE_HOST=localhost DATABASE_NAME=pclist DATABASE_USER=postgres DATABASE_PASSWORD=ifYouHaveAny
 bin/rails db:migrate
 bin/dev
 ```

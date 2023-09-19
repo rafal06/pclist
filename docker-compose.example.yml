@@ -10,8 +10,19 @@ services:
       RAILS_MASTER_KEY: paste-the-master-key
       # Same here, but with only `rails secret`
       SECRET_KEY_BASE: paste-the-secret-key
+
+      DATABASE_HOST: db
+      DATABASE_NAME: pclist
+      DATABASE_USER: postgres
     ports:
       - '3000:3000'
     volumes:
-      - ./docker-data:/data
       - ./docker-data/storage:/app/storage
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: pclist
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ./docker-data/db:/var/lib/postgresql/data
