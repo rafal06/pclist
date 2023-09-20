@@ -1,9 +1,37 @@
-<div class="d-flex flex-column align-items-center justify-content-center bg-i vh-100 vw-100 position-absolute top-0 start-0"
-     style="background-image: url('https://placehold.co/1920x1080');
+<div class="bg-container d-flex flex-column align-items-center justify-content-center bg-i vh-100 vw-100 position-absolute top-0 start-0"
+     style="background-image: url(<%= asset_path 'home-bg.jpg' %>);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
             z-index: -1;">
-  <h1>Show off your collection</h1>
-  <p class="fs-5">All your PCs in one place</p>
+  <div class="p-5 rounded-4 text-white d-flex flex-column align-items-center justify-content-center"
+       style="backdrop-filter: blur(50px)">
+    <h1>Show off your collection</h1>
+    <p class="fs-5">All your PCs in one place</p>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+  </div>
 </div>
+
+<style>
+    .bg-container::before {
+        content: '';
+        background-color: #000;
+        opacity: .5;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+
+    body > nav {
+      backdrop-filter: blur(50px) brightness(80%);
+
+      /* Basically Bootstrap's navbar-dark */
+      --bs-bg-opacity: 0 !important;
+      --bs-navbar-color: rgba(255, 255, 255, 0.75) !important;
+      --bs-navbar-hover-color: rgba(255, 255, 255, 0.9) !important;
+      --bs-navbar-brand-color: rgba(255, 255, 255, 0.9) !important;
+      --bs-navbar-brand-hover-color: rgba(255, 255, 255, 0.9) !important;
+      --bs-navbar-toggler-border-color: rgba(255, 255, 255, 0.1) !important;
+      --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  }
+</style>
